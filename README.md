@@ -5,8 +5,8 @@ Gympass
 ## RFs
 
 - [x] Deve ser poss�vel se cadastrar;
-- [ ] Deve ser poss�vel se autenticar;
-- [ ] Deve ser poss�vel obter o peril de um usu�rio logado;
+- [x] Deve ser poss�vel se autenticar;
+- [x] Deve ser poss�vel obter o peril de um usu�rio logado;
 - [ ] Deve ser poss�vel obter o n�mero de check-ins realizados pelo usu�rio logado;
 - [ ] Deve ser poss�vel o usu�rio obter seu hist�rico de check-ins;
 - [ ] Deve ser poss�vel o usu�rio buscar academias pr�ximas;
