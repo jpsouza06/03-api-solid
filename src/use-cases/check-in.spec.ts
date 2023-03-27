@@ -3,24 +3,27 @@ import { InMemoryGymRepository } from "@/repositories/in-memory/in-memory-gyms-r
 import { Decimal } from "@prisma/client/runtime/library"
 import { expect, describe, it,afterEach, beforeEach, vi} from "vitest"
 import { CheckinUseCase } from "./check-in"
+import { MaxDistanceError } from "./errors/max-distance-error"
+import { MaxNumberOfCheckInsError } from "./errors/max-number-of-check-ins-error"
 
 let checkInsRepository: InMemoryCheckInsRepository
 let gymsRepository: InMemoryGymRepository
 let sut: CheckinUseCase
 
 describe("Check-in Use Case", () => {
-   beforeEach(() => {
+   beforeEach(async () => {
       checkInsRepository = new InMemoryCheckInsRepository()
       gymsRepository = new InMemoryGymRepository()
       sut = new CheckinUseCase(checkInsRepository, gymsRepository)
 
-      gymsRepository.items.push({
+      await gymsRepository.create({
          id: "gym-01",
          title: "JS Gym",
          description: "",
          phone: "",
-         latitude: new Decimal(-18.5779679),
-         longitude: new Decimal(-45.4514553)
+         latitude: -18.5779679,
+         longitude: -45.4514553,
+         created_at: new Date()
       })
 
       vi.useFakeTimers()
@@ -54,7 +57,7 @@ describe("Check-in Use Case", () => {
          userId: "user-01",
          userLatitude: -18.5779679,
          userLongitude: -45.4514553
-      })).rejects.toBeInstanceOf(Error)
+      })).rejects.toBeInstanceOf(MaxNumberOfCheckInsError)
    })
    it("should be able to check in twice but in different days", async () => {
       vi.setSystemTime(new Date(2022, 0, 20, 8, 0 ,0))
@@ -84,7 +87,8 @@ describe("Check-in Use Case", () => {
          description: "",
          phone: "",
          latitude: new Decimal(-8.8437692),
-         longitude: new Decimal(-40.3747166)
+         longitude: new Decimal(-40.3747166),
+         created_at: new Date()
       })
 
       await expect(() => 
@@ -93,6 +97,6 @@ describe("Check-in Use Case", () => {
             userId: "user-01",
             userLatitude: -18.5779679,
             userLongitude: -45.4514553
-         })).rejects.toBeInstanceOf(Error)
+         })).rejects.toBeInstanceOf(MaxDistanceError)
    })
 })

@@ -13,13 +13,13 @@ Gympass
 - [ ] Deve ser poss�vel o usu�rio buscar academias pelo nome;
 - [x] Deve ser poss�vel o usu�rio realizar check-in em uma acedemia;
 - [ ] Deve ser poss�vel validar o check-in de um usu�rio;
-- [ ] Deve ser poss�vel cadastrar uma academia;
+- [x] Deve ser poss�vel cadastrar uma academia;
 
 ## RNs
 
 - [x] O usu�rio n�o deve poder se cadastrar com um e-mail duplicado;
 - [x] O usu�rio n�o pode fazer 2 check-ins no mesmo dia;
-- [ ] O usu�rio n�o pode fazer check-in se n�o estiver perto(100m) da academia;
+- [x] O usu�rio n�o pode fazer check-in se n�o estiver perto(100m) da academia;
 - [ ] O check-in s� pode ser validado ate 20 minutos ap�s criado;
 - [ ] O check-in s� pode ser validado por administradores;
 - [ ] A academia s� pode ser cadastrada por administradores;
