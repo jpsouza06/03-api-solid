@@ -16,7 +16,7 @@ app.setErrorHandler((error, _, reply) => {
    if (error instanceof ZodError) {
       return reply
          .status(400)
-         .send({ message: "Validantio error", issues: error.format()})
+         .send({ message: "Validantion error", issues: error.format()})
    }
 
    if (env.NODE_ENV !== "production") {
