@@ -4,7 +4,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest"
 import { CreateAndAuthenticaUser } from "@/utils/test/create-and-authenticate-user"
 import { prisma } from "@/lib/prisma"
 
-describe("Vlidate Check-in (e2e)", () => {
+describe("Validate Check-in (e2e)", () => {
    beforeAll(async () => {
       await app.ready()
    })
@@ -14,7 +14,7 @@ describe("Vlidate Check-in (e2e)", () => {
    })
    
    it("should be able to validate a check-in", async () => {
-      const { token } = await CreateAndAuthenticaUser(app)
+      const { token } = await CreateAndAuthenticaUser(app, true)
 
       const user = await prisma.user.findFirstOrThrow()
 
